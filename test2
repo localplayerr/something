@@ -10,20 +10,26 @@ local savetab = {}
 
 for _ , v in toys:GetChildren() do
     if v.Name ~= "ToyNumber" then
-        table.insert(savetab ,{v.Name,v.PrimaryPart.CFrame,v.PrimaryPart.Rotation})
+        table.insert(savetab ,{v.Name,v.PrimaryPart.position,v.PrimaryPart.Rotation})
     end
 end
 
 print("Succes")
 
-task.wait(10)
+task.wait(5)
 
 print("load")
+
+local obj = savetab[1]
+
+print(tostring(obj[1])) -- toy name
+print(tostring(CFrame.new(obj[2]))) -- position
+print(tostring(obj[3])) -- orientation)
 
 for _ , obj in savetab do
     game.ReplicatedStorage.MenuToys.SpawnToyRemoteFunction:InvokeServer(
     obj[1], -- toy name
-    obj[2], -- position
+    CFrame.new(obj[2]), -- position
     obj[3] -- orientation
     ) 
 end
