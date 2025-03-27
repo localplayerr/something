@@ -1,0 +1,22 @@
+local player = "dimadima19800"
+
+local ploti = game.Workspace.PlotItems.Plot3
+local dums = {}
+
+for _ , v in ploti:GetChildren() do
+    if v.Name == "YouD" then table.insert(dums,v.Humanoid) end
+end
+
+local b = true
+
+task.spawn(function()
+    task.wait(60)
+    b = false
+end)
+
+while task.wait() and b do
+    for _ , dum in dums do
+        dum.Jump = true
+        dum.WalkToPoint = game.Players[player].Character.HumanoidRootPart.Position
+    end
+end
