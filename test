@@ -1,10 +1,10 @@
 local player = "dimadima19800"
 
-local ploti = game.Workspace.PlotItems.Plot3
+local ploti = game.Workspace.PlotItems.Plot4
 local dums = {}
 
 for _ , v in ploti:GetChildren() do
-    if v.Name == "YouD" then table.insert(dums,v.Humanoid) end
+    if v.Name == "YouDecoy" then table.insert(dums,v.Humanoid) end
 end
 
 local b = true
