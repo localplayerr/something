@@ -1,6 +1,8 @@
-local player = "dimadima19800"
+local player = "katletka1448"
 
-local ploti = game.Workspace.PlotItems.Plot4
+_G.speed = 50
+
+local ploti = game.Workspace.PlotItems.Plot3
 local dums = {}
 
 for _ , v in ploti:GetChildren() do
@@ -10,13 +12,18 @@ end
 local b = true
 
 task.spawn(function()
-    task.wait(60)
+    task.wait(10000)
     b = false
 end)
+
+    for _ , dum in dums do
+        dum.Parent.HumanoidRootPart.CFrame = game.Players[player].Character.HumanoidRootPart.CFrame
+    end
 
 while task.wait() and b do
     for _ , dum in dums do
         dum.Jump = true
         dum.WalkToPoint = game.Players[player].Character.HumanoidRootPart.Position
+        dum.WalkSpeed = _G.speed
     end
 end
