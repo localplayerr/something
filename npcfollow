@@ -1,0 +1,93 @@
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/CustomFIeld/main/RayField.lua'))()
+
+local players = game.Players:GetPlayers()
+local player = nil
+local sped = 16
+local isfollow = false
+local j = false
+
+local ploti = game.Workspace.PlotItems.Plot4
+local dums = {}
+
+local Tab = Rayfield:CreateWindow({
+   Name = "Npc control script",
+   LoadingTitle = "Loading..",
+   LoadingSubtitle = "Please wait",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Npctool"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "sirius", -- The Discord invite code, do not include discord.gg/
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Sirius Hub",
+      Subtitle = "Key System",
+      Note = "Join the discord (discord.gg/sirius)",
+      FileName = "SiriusKey",
+      SaveKey = true,
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = "Hello"
+   }
+})
+
+local Toggle = Tab:CreateToggle({
+   Name = "Follow player",
+   Info = "Enable/disbale follow", -- Speaks for itself, Remove if none.
+   CurrentValue = false,
+   Flag = "Togglefollow", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Valuue)
+        isfollow = Valuue
+   end,
+})
+
+local plrselect = Tab:CreateDropdown({
+   Name = "Select player",
+   Options = players,
+   CurrentOption = players[game.Players.LocalPlayer.Name],
+   MultiSelection = false, -- If MultiSelections is allowed
+   Flag = "Select player", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Option)
+        player = players[Option]
+   end,
+})
+
+local Slider = Tab:CreateSlider({
+   Name = "WalkSpped",
+   Info = "Walkspeed of npc", -- Speaks for itself, Remove if none.
+   Range = {0, 150},
+   Increment = 1,
+   Suffix = "",
+   CurrentValue = 16,
+   Flag = "SliderSpeed", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        sped = Value
+   end,
+})
+
+local Toggle = Tab:CreateToggle({
+   Name = "Jump",
+   Info = "Enable/disable jumps", -- Speaks for itself, Remove if none.
+   CurrentValue = false,
+   Flag = "Togglejump", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Vale)
+        isfollow = Vale
+   end,
+})
+
+while task.wait() do
+    for _ , objec in ploti:GetChildren() do
+        if objec.Name == "YouDecoy" then table.insert(dums,objec) end
+    end
+    if isfollow then
+        for _ , dum in dums do
+            dum.WalkToPoint = game.Players[player].Character.HumanoidRootPart.Position
+            dum.Jump = j
+            dum.WalkSpeed = sped
+        end
+    end
+end
