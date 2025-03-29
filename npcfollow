@@ -6,10 +6,10 @@ local sped = 16
 local isfollow = false
 local j = false
 
-local ploti = game.Workspace.PlotItems.Plot4
+local ploti = game.Workspace.PlotItems.Plot3
 local dums = {}
 
-local Tab = Rayfield:CreateWindow({
+local wab = Rayfield:CreateWindow({
    Name = "Npc control script",
    LoadingTitle = "Loading..",
    LoadingSubtitle = "Please wait",
@@ -35,6 +35,8 @@ local Tab = Rayfield:CreateWindow({
    }
 })
 
+local Tab = wab:CreateTab("Tab Example", 4483362458) -- Title, Image
+
 local Toggle = Tab:CreateToggle({
    Name = "Follow player",
    Info = "Enable/disbale follow", -- Speaks for itself, Remove if none.
@@ -48,9 +50,9 @@ local Toggle = Tab:CreateToggle({
 local plrselect = Tab:CreateDropdown({
    Name = "Select player",
    Options = players,
-   CurrentOption = players[game.Players.LocalPlayer.Name],
+   CurrentOption = players[1],
    MultiSelection = false, -- If MultiSelections is allowed
-   Flag = "Select player", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Flag = "Select p", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Option)
         player = players[Option]
    end,
