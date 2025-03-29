@@ -1,8 +1,8 @@
-local player = "katletka1448"
+local player = "annkiti000"
 
 _G.speed = 50
 
-local ploti = game.Workspace.PlotItems.Plot3
+local ploti = game.Workspace.PlotItems.Plot2
 local dums = {}
 
 for _ , v in ploti:GetChildren() do
