@@ -5,6 +5,7 @@
 
 local dums = {}
 local jumps = false
+local paused = false
 
 -- Instances:
 
@@ -802,16 +803,19 @@ end)
 
 local FollowFunction = coroutine.create(function()
 	while task.wait() do
-		dums = {}
-		for _ , v in game.Workspace.PlotItems["Plot"..SlotSelect["plar"].Text]:GetChildren() do
-			if v.Name == "YouDecoy" then table.insert(dums,v.Humanoid) end
-		end
-		for _ , dum in dums do
-			dum.Jump = jumps
-			dum.WalkToPoint = game.Players[PlayerSelect["plar"].Text].Character.HumanoidRootPart.Position
-			dum.WalkSpeed = tonumber(Speed["plar"].Text)
-		end
+		task.spawn(function()
+			dums = {}
+			for _ , v in game.Workspace.PlotItems["Plot"..SlotSelect["plar"].Text]:GetChildren() do
+				if v.Name == "YouDecoy" then table.insert(dums,v.Humanoid) end
+			end
+			for _ , dum in dums do
+				dum.Jump = jumps
+				dum.WalkToPoint = game.Players[PlayerSelect["plar"].Text].Character.HumanoidRootPart.Position
+				dum.WalkSpeed = tonumber(Speed["plar"].Text)
+			end
+		end)
 	end
+	if paused == true then coroutine.yield() end
 end)
 
 -- Gui functions
@@ -852,10 +856,11 @@ end)
 Follow["Button"].MouseButton1Click:Connect(function()
 	if Follow["plar"]["plar2"].Visible == false then
 		Follow["plar"]["plar2"].Visible = true
+		paused = false
 		coroutine.resume(FollowFunction)
 	else
 		Follow["plar"]["plar2"].Visible = false
-		coroutine.yield(FollowFunction)
+		paused = true
 	end
 end)
 
