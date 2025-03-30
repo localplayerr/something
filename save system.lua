@@ -5,10 +5,19 @@ function save(name)
 
     for _ , v in toys:GetChildren() do
         if v.Name ~= "ToyNumber" then
-            table.insert(savetab , {v.Name,v:GetPivot()})
+            table.insert(savetab , {v.Name,tostring(v:GetPivot())})
         end
     end
-    Writefile(name..".lua","tabl = "..savetab.." return tabl")
+
+    local b = "{"
+    for i , v in savetab do
+        local p = ","
+        if i == 1 then p = "" end
+        b = b..p.."{"..v[1]..","..v[2].."}"
+    end
+    b = b.."}"
+
+    writefile(name..".lua","local tabl = "..b.." return tabl")
 
     warn("saved")
 end
@@ -28,4 +37,4 @@ function load(name)
     warn("loaded")
 end
 
-save("TestBuild")
+load("TestBuild")
