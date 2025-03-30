@@ -1,12 +1,6 @@
 -- Gui to Lua
 -- Version: 3.2
 
--- Variables
-
-local dums = {}
-local jumps = false
-local paused = false
-
 -- Instances:
 
 local ScreenGui = Instance.new("ScreenGui")
@@ -67,24 +61,36 @@ local UICorner_19 = Instance.new("UICorner")
 local plar2_3 = Instance.new("Frame")
 local UICorner_20 = Instance.new("UICorner")
 local Button_4 = Instance.new("TextButton")
+local Freeze = Instance.new("Frame")
+local UICorner_21 = Instance.new("UICorner")
+local source_9 = Instance.new("TextLabel")
+local plar_8 = Instance.new("Frame")
+local UICorner_22 = Instance.new("UICorner")
+local plar2_4 = Instance.new("Frame")
+local UICorner_23 = Instance.new("UICorner")
+local Button_5 = Instance.new("TextButton")
 local PLAYER = Instance.new("Frame")
 local UIListLayout_2 = Instance.new("UIListLayout")
 local Camera = Instance.new("Frame")
-local UICorner_21 = Instance.new("UICorner")
-local source_9 = Instance.new("TextLabel")
-local Button_5 = Instance.new("TextButton")
-local Spy = Instance.new("Frame")
-local UICorner_22 = Instance.new("UICorner")
-local source_10 = Instance.new("TextLabel")
-local plar_8 = Instance.new("Frame")
-local UICorner_23 = Instance.new("UICorner")
-local plar2_4 = Instance.new("Frame")
 local UICorner_24 = Instance.new("UICorner")
+local source_10 = Instance.new("TextLabel")
 local Button_6 = Instance.new("TextButton")
-local Tp = Instance.new("Frame")
+local Spy = Instance.new("Frame")
 local UICorner_25 = Instance.new("UICorner")
 local source_11 = Instance.new("TextLabel")
+local plar_9 = Instance.new("Frame")
+local UICorner_26 = Instance.new("UICorner")
+local plar2_5 = Instance.new("Frame")
+local UICorner_27 = Instance.new("UICorner")
 local Button_7 = Instance.new("TextButton")
+local Tp = Instance.new("Frame")
+local UICorner_28 = Instance.new("UICorner")
+local source_12 = Instance.new("TextLabel")
+local Button_8 = Instance.new("TextButton")
+local ViewMouse = Instance.new("Frame")
+local UICorner_29 = Instance.new("UICorner")
+local source_13 = Instance.new("TextLabel")
+local Button_9 = Instance.new("TextButton")
 local quote = Instance.new("TextLabel")
 
 --Properties:
@@ -96,7 +102,7 @@ Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0, 0, 0, 0)
+Frame.Position = UDim2.new(0.198170722, 0, 0.0239547025, 0)
 Frame.Size = UDim2.new(0, 433, 0, 436)
 
 Frame_2.Parent = Frame
@@ -584,6 +590,72 @@ Button_4.Text = " "
 Button_4.TextColor3 = Color3.fromRGB(0, 0, 0)
 Button_4.TextSize = 14.000
 
+Freeze.Name = "Freeze"
+Freeze.Parent = NPC
+Freeze.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+Freeze.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Freeze.BorderSizePixel = 0
+Freeze.LayoutOrder = 8
+Freeze.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_21.CornerRadius = UDim.new(0, 5)
+UICorner_21.Parent = Freeze
+
+source_9.Name = "source"
+source_9.Parent = Freeze
+source_9.AnchorPoint = Vector2.new(0.5, 0.5)
+source_9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_9.BackgroundTransparency = 1.000
+source_9.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_9.BorderSizePixel = 0
+source_9.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_9.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_9.Font = Enum.Font.SourceSansBold
+source_9.Text = "Anchored:"
+source_9.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_9.TextScaled = true
+source_9.TextSize = 14.000
+source_9.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_9.TextWrapped = true
+source_9.TextXAlignment = Enum.TextXAlignment.Left
+
+plar_8.Name = "plar"
+plar_8.Parent = Freeze
+plar_8.AnchorPoint = Vector2.new(0.5, 0.5)
+plar_8.BackgroundColor3 = Color3.fromRGB(102, 177, 113)
+plar_8.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar_8.BorderSizePixel = 0
+plar_8.Position = UDim2.new(0.922999978, 0, 0.5, 0)
+plar_8.Size = UDim2.new(0, 20, 0, 20)
+
+UICorner_22.CornerRadius = UDim.new(0, 5)
+UICorner_22.Parent = plar_8
+
+plar2_4.Name = "plar2"
+plar2_4.Parent = plar_8
+plar2_4.AnchorPoint = Vector2.new(0.5, 0.5)
+plar2_4.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+plar2_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar2_4.BorderSizePixel = 0
+plar2_4.Position = UDim2.new(0.5, 0, 0.5, 0)
+plar2_4.Size = UDim2.new(0.699999988, 0, 0.699999988, 0)
+plar2_4.Visible = false
+
+UICorner_23.CornerRadius = UDim.new(0, 5)
+UICorner_23.Parent = plar2_4
+
+Button_5.Name = "Button"
+Button_5.Parent = Freeze
+Button_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button_5.BackgroundTransparency = 1.000
+Button_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Button_5.BorderSizePixel = 0
+Button_5.Size = UDim2.new(1, 0, 1, 0)
+Button_5.Font = Enum.Font.SourceSans
+Button_5.Text = " "
+Button_5.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button_5.TextSize = 14.000
+
 PLAYER.Name = "PLAYER"
 PLAYER.Parent = buttons
 PLAYER.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -604,51 +676,11 @@ Camera.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Camera.BorderSizePixel = 0
 Camera.Size = UDim2.new(0, 201, 0, 24)
 
-UICorner_21.CornerRadius = UDim.new(0, 5)
-UICorner_21.Parent = Camera
-
-source_9.Name = "source"
-source_9.Parent = Camera
-source_9.AnchorPoint = Vector2.new(0.5, 0.5)
-source_9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-source_9.BackgroundTransparency = 1.000
-source_9.BorderColor3 = Color3.fromRGB(0, 0, 0)
-source_9.BorderSizePixel = 0
-source_9.Position = UDim2.new(0.5, 0, 0.5, 0)
-source_9.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
-source_9.Font = Enum.Font.SourceSansBold
-source_9.Text = "Unlock camera"
-source_9.TextColor3 = Color3.fromRGB(0, 0, 0)
-source_9.TextScaled = true
-source_9.TextSize = 14.000
-source_9.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
-source_9.TextWrapped = true
-
-Button_5.Name = "Button"
-Button_5.Parent = Camera
-Button_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Button_5.BackgroundTransparency = 1.000
-Button_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Button_5.BorderSizePixel = 0
-Button_5.Size = UDim2.new(1, 0, 1, 0)
-Button_5.Font = Enum.Font.SourceSans
-Button_5.Text = " "
-Button_5.TextColor3 = Color3.fromRGB(0, 0, 0)
-Button_5.TextSize = 14.000
-
-Spy.Name = "Spy"
-Spy.Parent = PLAYER
-Spy.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
-Spy.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Spy.BorderSizePixel = 0
-Spy.LayoutOrder = 1
-Spy.Size = UDim2.new(0, 201, 0, 24)
-
-UICorner_22.CornerRadius = UDim.new(0, 5)
-UICorner_22.Parent = Spy
+UICorner_24.CornerRadius = UDim.new(0, 5)
+UICorner_24.Parent = Camera
 
 source_10.Name = "source"
-source_10.Parent = Spy
+source_10.Parent = Camera
 source_10.AnchorPoint = Vector2.new(0.5, 0.5)
 source_10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 source_10.BackgroundTransparency = 1.000
@@ -657,41 +689,15 @@ source_10.BorderSizePixel = 0
 source_10.Position = UDim2.new(0.5, 0, 0.5, 0)
 source_10.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
 source_10.Font = Enum.Font.SourceSansBold
-source_10.Text = "View player:"
+source_10.Text = "Unlock camera"
 source_10.TextColor3 = Color3.fromRGB(0, 0, 0)
 source_10.TextScaled = true
 source_10.TextSize = 14.000
 source_10.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
 source_10.TextWrapped = true
-source_10.TextXAlignment = Enum.TextXAlignment.Left
-
-plar_8.Name = "plar"
-plar_8.Parent = Spy
-plar_8.AnchorPoint = Vector2.new(0.5, 0.5)
-plar_8.BackgroundColor3 = Color3.fromRGB(102, 177, 113)
-plar_8.BorderColor3 = Color3.fromRGB(0, 0, 0)
-plar_8.BorderSizePixel = 0
-plar_8.Position = UDim2.new(0.922999978, 0, 0.5, 0)
-plar_8.Size = UDim2.new(0, 20, 0, 20)
-
-UICorner_23.CornerRadius = UDim.new(0, 5)
-UICorner_23.Parent = plar_8
-
-plar2_4.Name = "plar2"
-plar2_4.Parent = plar_8
-plar2_4.AnchorPoint = Vector2.new(0.5, 0.5)
-plar2_4.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
-plar2_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
-plar2_4.BorderSizePixel = 0
-plar2_4.Position = UDim2.new(0.5, 0, 0.5, 0)
-plar2_4.Size = UDim2.new(0.699999988, 0, 0.699999988, 0)
-plar2_4.Visible = false
-
-UICorner_24.CornerRadius = UDim.new(0, 5)
-UICorner_24.Parent = plar2_4
 
 Button_6.Name = "Button"
-Button_6.Parent = Spy
+Button_6.Parent = Camera
 Button_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Button_6.BackgroundTransparency = 1.000
 Button_6.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -702,19 +708,19 @@ Button_6.Text = " "
 Button_6.TextColor3 = Color3.fromRGB(0, 0, 0)
 Button_6.TextSize = 14.000
 
-Tp.Name = "Tp"
-Tp.Parent = PLAYER
-Tp.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
-Tp.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Tp.BorderSizePixel = 0
-Tp.LayoutOrder = 2
-Tp.Size = UDim2.new(0, 201, 0, 24)
+Spy.Name = "Spy"
+Spy.Parent = PLAYER
+Spy.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+Spy.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Spy.BorderSizePixel = 0
+Spy.LayoutOrder = 1
+Spy.Size = UDim2.new(0, 201, 0, 24)
 
 UICorner_25.CornerRadius = UDim.new(0, 5)
-UICorner_25.Parent = Tp
+UICorner_25.Parent = Spy
 
 source_11.Name = "source"
-source_11.Parent = Tp
+source_11.Parent = Spy
 source_11.AnchorPoint = Vector2.new(0.5, 0.5)
 source_11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 source_11.BackgroundTransparency = 1.000
@@ -723,15 +729,41 @@ source_11.BorderSizePixel = 0
 source_11.Position = UDim2.new(0.5, 0, 0.5, 0)
 source_11.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
 source_11.Font = Enum.Font.SourceSansBold
-source_11.Text = "Teleport npc to player"
+source_11.Text = "View player:"
 source_11.TextColor3 = Color3.fromRGB(0, 0, 0)
 source_11.TextScaled = true
 source_11.TextSize = 14.000
 source_11.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
 source_11.TextWrapped = true
+source_11.TextXAlignment = Enum.TextXAlignment.Left
+
+plar_9.Name = "plar"
+plar_9.Parent = Spy
+plar_9.AnchorPoint = Vector2.new(0.5, 0.5)
+plar_9.BackgroundColor3 = Color3.fromRGB(102, 177, 113)
+plar_9.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar_9.BorderSizePixel = 0
+plar_9.Position = UDim2.new(0.922999978, 0, 0.5, 0)
+plar_9.Size = UDim2.new(0, 20, 0, 20)
+
+UICorner_26.CornerRadius = UDim.new(0, 5)
+UICorner_26.Parent = plar_9
+
+plar2_5.Name = "plar2"
+plar2_5.Parent = plar_9
+plar2_5.AnchorPoint = Vector2.new(0.5, 0.5)
+plar2_5.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+plar2_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar2_5.BorderSizePixel = 0
+plar2_5.Position = UDim2.new(0.5, 0, 0.5, 0)
+plar2_5.Size = UDim2.new(0.699999988, 0, 0.699999988, 0)
+plar2_5.Visible = false
+
+UICorner_27.CornerRadius = UDim.new(0, 5)
+UICorner_27.Parent = plar2_5
 
 Button_7.Name = "Button"
-Button_7.Parent = Tp
+Button_7.Parent = Spy
 Button_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Button_7.BackgroundTransparency = 1.000
 Button_7.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -741,6 +773,86 @@ Button_7.Font = Enum.Font.SourceSans
 Button_7.Text = " "
 Button_7.TextColor3 = Color3.fromRGB(0, 0, 0)
 Button_7.TextSize = 14.000
+
+Tp.Name = "Tp"
+Tp.Parent = PLAYER
+Tp.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+Tp.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Tp.BorderSizePixel = 0
+Tp.LayoutOrder = 2
+Tp.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_28.CornerRadius = UDim.new(0, 5)
+UICorner_28.Parent = Tp
+
+source_12.Name = "source"
+source_12.Parent = Tp
+source_12.AnchorPoint = Vector2.new(0.5, 0.5)
+source_12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_12.BackgroundTransparency = 1.000
+source_12.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_12.BorderSizePixel = 0
+source_12.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_12.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_12.Font = Enum.Font.SourceSansBold
+source_12.Text = "Teleport npc to player"
+source_12.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_12.TextScaled = true
+source_12.TextSize = 14.000
+source_12.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_12.TextWrapped = true
+
+Button_8.Name = "Button"
+Button_8.Parent = Tp
+Button_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button_8.BackgroundTransparency = 1.000
+Button_8.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Button_8.BorderSizePixel = 0
+Button_8.Size = UDim2.new(1, 0, 1, 0)
+Button_8.Font = Enum.Font.SourceSans
+Button_8.Text = " "
+Button_8.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button_8.TextSize = 14.000
+
+ViewMouse.Name = "ViewMouse"
+ViewMouse.Parent = PLAYER
+ViewMouse.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+ViewMouse.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ViewMouse.BorderSizePixel = 0
+ViewMouse.LayoutOrder = 3
+ViewMouse.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_29.CornerRadius = UDim.new(0, 5)
+UICorner_29.Parent = ViewMouse
+
+source_13.Name = "source"
+source_13.Parent = ViewMouse
+source_13.AnchorPoint = Vector2.new(0.5, 0.5)
+source_13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_13.BackgroundTransparency = 1.000
+source_13.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_13.BorderSizePixel = 0
+source_13.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_13.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_13.Font = Enum.Font.SourceSansBold
+source_13.Text = "View cursor"
+source_13.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_13.TextScaled = true
+source_13.TextSize = 14.000
+source_13.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_13.TextWrapped = true
+
+Button_9.Name = "Button"
+Button_9.Parent = ViewMouse
+Button_9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button_9.BackgroundTransparency = 1.000
+Button_9.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Button_9.BorderSizePixel = 0
+Button_9.Size = UDim2.new(1, 0, 1, 0)
+Button_9.Font = Enum.Font.SourceSans
+Button_9.Text = " "
+Button_9.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button_9.TextSize = 14.000
 
 quote.Name = "quote"
 quote.Parent = Frame
@@ -883,8 +995,24 @@ end)
 Spy["Button"].MouseButton1Click:Connect(function()
 	if Spy["plar"]["plar2"].Visible == false then
 		Spy["plar"]["plar2"].Visible = true
+		game.Workspace.CurrentCamera.CameraSubject = game.Players[PlayerSelect["plar"].Text].Character.Humanoid
 	else
 		Spy["plar"]["plar2"].Visible = false
+		game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
+	end
+end)
+
+Freeze["Button"].MouseButton1Click:Connect(function()
+	if Freeze["plar"]["plar2"].Visible == false then
+		Freeze["plar"]["plar2"].Visible = true
+		for _ , dum in dums do
+			dum.Parent.HumanoidRootPart.Anchored = true
+		end
+	else
+		Freeze["plar"]["plar2"].Visible = false
+		for _ , dum in dums do
+			dum.Parent.HumanoidRootPart.Anchored = false
+		end
 	end
 end)
 
