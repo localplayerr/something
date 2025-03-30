@@ -17,7 +17,7 @@ function save(name)
     end
     b = b.."}"
 
-    writefile(name..".lua","local tabl = "..b.." return tabl")
+    writefile(name..".lua","return"..b)
 
     warn("saved")
 end
