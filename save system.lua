@@ -23,7 +23,9 @@ function save(name)
 end
 
 function load(name)
-    dofile(name..".lua")
+    local tabl = dofile(name..".lua")
+
+    print(#tabl)
 
     for _ , obj in tabl do
         game.ReplicatedStorage.MenuToys.SpawnToyRemoteFunction:InvokeServer(
@@ -37,4 +39,4 @@ function load(name)
     warn("loaded")
 end
 
-load("TestBuild")
+save("TestBuild")
