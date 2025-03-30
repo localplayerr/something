@@ -1,95 +1,842 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+-- Gui to Lua
+-- Version: 3.2
 
-local players = game.Players:GetPlayers()
-local player = nil
-local sped = 16
-local isfollow = false
-local j = false
+-- Instances:
 
-local ploti = game.Workspace.PlotItems.Plot3
-local dums = {}
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Frame_2 = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Frame_3 = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local UICorner_2 = Instance.new("UICorner")
+local buttons = Instance.new("Folder")
+local NPC = Instance.new("Frame")
+local UIListLayout = Instance.new("UIListLayout")
+local PlayerSelect = Instance.new("Frame")
+local UICorner_3 = Instance.new("UICorner")
+local source = Instance.new("TextLabel")
+local plar = Instance.new("TextBox")
+local UICorner_4 = Instance.new("UICorner")
+local SlotSelect = Instance.new("Frame")
+local UICorner_5 = Instance.new("UICorner")
+local source_2 = Instance.new("TextLabel")
+local plar_2 = Instance.new("TextBox")
+local UICorner_6 = Instance.new("UICorner")
+local Speed = Instance.new("Frame")
+local UICorner_7 = Instance.new("UICorner")
+local source_3 = Instance.new("TextLabel")
+local plar_3 = Instance.new("TextBox")
+local UICorner_8 = Instance.new("UICorner")
+local JumpPower = Instance.new("Frame")
+local UICorner_9 = Instance.new("UICorner")
+local source_4 = Instance.new("TextLabel")
+local plar_4 = Instance.new("TextBox")
+local UICorner_10 = Instance.new("UICorner")
+local Border = Instance.new("Frame")
+local UICorner_11 = Instance.new("UICorner")
+local source_5 = Instance.new("TextLabel")
+local plar_5 = Instance.new("Frame")
+local UICorner_12 = Instance.new("UICorner")
+local plar2 = Instance.new("Frame")
+local UICorner_13 = Instance.new("UICorner")
+local Button = Instance.new("TextButton")
+local jumping = Instance.new("Frame")
+local UICorner_14 = Instance.new("UICorner")
+local source_6 = Instance.new("TextLabel")
+local plar_6 = Instance.new("Frame")
+local UICorner_15 = Instance.new("UICorner")
+local plar2_2 = Instance.new("Frame")
+local UICorner_16 = Instance.new("UICorner")
+local Button_2 = Instance.new("TextButton")
+local Jump = Instance.new("Frame")
+local UICorner_17 = Instance.new("UICorner")
+local source_7 = Instance.new("TextLabel")
+local Button_3 = Instance.new("TextButton")
+local Follow = Instance.new("Frame")
+local UICorner_18 = Instance.new("UICorner")
+local source_8 = Instance.new("TextLabel")
+local plar_7 = Instance.new("Frame")
+local UICorner_19 = Instance.new("UICorner")
+local plar2_3 = Instance.new("Frame")
+local UICorner_20 = Instance.new("UICorner")
+local Button_4 = Instance.new("TextButton")
+local PLAYER = Instance.new("Frame")
+local UIListLayout_2 = Instance.new("UIListLayout")
+local Camera = Instance.new("Frame")
+local UICorner_21 = Instance.new("UICorner")
+local source_9 = Instance.new("TextLabel")
+local Button_5 = Instance.new("TextButton")
+local Spy = Instance.new("Frame")
+local UICorner_22 = Instance.new("UICorner")
+local source_10 = Instance.new("TextLabel")
+local plar_8 = Instance.new("Frame")
+local UICorner_23 = Instance.new("UICorner")
+local plar2_4 = Instance.new("Frame")
+local UICorner_24 = Instance.new("UICorner")
+local Button_6 = Instance.new("TextButton")
+local Tp = Instance.new("Frame")
+local UICorner_25 = Instance.new("UICorner")
+local source_11 = Instance.new("TextLabel")
+local Button_7 = Instance.new("TextButton")
+local quote = Instance.new("TextLabel")
 
-local wab = Rayfield:CreateWindow({
-   Name = "Npc control script",
-   LoadingTitle = "Loading..",
-   LoadingSubtitle = "Please wait",
-   ConfigurationSaving = {
-      Enabled = true,
-      FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "Npctool"
-   },
-   Discord = {
-      Enabled = false,
-      Invite = "sirius", -- The Discord invite code, do not include discord.gg/
-      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
-   },
-   KeySystem = false, -- Set this to true to use our key system
-   KeySettings = {
-      Title = "Sirius Hub",
-      Subtitle = "Key System",
-      Note = "Join the discord (discord.gg/sirius)",
-      FileName = "SiriusKey",
-      SaveKey = true,
-      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = "Hello"
-   }
-})
+--Properties:
 
-local Tab = wab:CreateTab("Tab Example", 4483362458) -- Title, Image
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-local Toggle = Tab:CreateToggle({
-   Name = "Follow player",
-   Info = "Enable/disbale follow", -- Speaks for itself, Remove if none.
-   CurrentValue = false,
-   Flag = "Togglefollow", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Valuue)
-        isfollow = Valuue
-   end,
-})
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.198170722, 0, 0.0239547025, 0)
+Frame.Size = UDim2.new(0, 433, 0, 436)
 
-local plrselect = Tab:CreateDropdown({
-   Name = "Select player",
-   Options = players,
-   CurrentOption = players[1],
-   MultiSelection = false, -- If MultiSelections is allowed
-   Flag = "Select p", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Option)
-        player = players[Option]
-   end,
-})
+Frame_2.Parent = Frame
+Frame_2.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame_2.BorderSizePixel = 0
+Frame_2.Position = UDim2.new(-3.52396974e-08, 0, 0, 0)
+Frame_2.Size = UDim2.new(0, 433, 0, 17)
 
-local Slider = Tab:CreateSlider({
-   Name = "WalkSpped",
-   Info = "Walkspeed of npc", -- Speaks for itself, Remove if none.
-   Range = {0, 150},
-   Increment = 1,
-   Suffix = "",
-   CurrentValue = 16,
-   Flag = "SliderSpeed", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-        sped = Value
-   end,
-})
+UICorner.CornerRadius = UDim.new(0, 5)
+UICorner.Parent = Frame_2
 
-local Toggle = Tab:CreateToggle({
-   Name = "Jump",
-   Info = "Enable/disable jumps", -- Speaks for itself, Remove if none.
-   CurrentValue = false,
-   Flag = "Togglejump", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Vale)
-        isfollow = Vale
-   end,
-})
+Frame_3.Parent = Frame_2
+Frame_3.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+Frame_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame_3.BorderSizePixel = 0
+Frame_3.Position = UDim2.new(-3.52396974e-08, 0, 0.483266056, 0)
+Frame_3.Size = UDim2.new(0, 433, 0, 19)
 
-while task.wait() do
-    for _ , objec in ploti:GetChildren() do
-        if objec.Name == "YouDecoy" then table.insert(dums,objec) end
-    end
-    if isfollow then
-        for _ , dum in dums do
-            dum.WalkToPoint = game.Players[player].Character.HumanoidRootPart.Position
-            dum.Jump = j
-            dum.WalkSpeed = sped
-        end
-    end
+Title.Name = "Title"
+Title.Parent = Frame_2
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0.0200574491, 0, 0, 0)
+Title.Size = UDim2.new(0, 417, 0, 27)
+Title.Font = Enum.Font.SourceSansBold
+Title.Text = "Npc control  script"
+Title.TextColor3 = Color3.fromRGB(0, 0, 0)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+Title.TextWrapped = true
+
+UICorner_2.CornerRadius = UDim.new(0, 5)
+UICorner_2.Parent = Frame
+
+buttons.Name = "buttons"
+buttons.Parent = Frame
+
+NPC.Name = "NPC"
+NPC.Parent = buttons
+NPC.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+NPC.BackgroundTransparency = 1.000
+NPC.BorderColor3 = Color3.fromRGB(0, 0, 0)
+NPC.BorderSizePixel = 0
+NPC.Position = UDim2.new(0.0200574491, 0, 0.0937492326, 0)
+NPC.Size = UDim2.new(0, 204, 0, 382)
+
+UIListLayout.Parent = NPC
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Padding = UDim.new(0, 8)
+
+PlayerSelect.Name = "PlayerSelect"
+PlayerSelect.Parent = NPC
+PlayerSelect.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+PlayerSelect.BorderColor3 = Color3.fromRGB(0, 0, 0)
+PlayerSelect.BorderSizePixel = 0
+PlayerSelect.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_3.CornerRadius = UDim.new(0, 5)
+UICorner_3.Parent = PlayerSelect
+
+source.Name = "source"
+source.Parent = PlayerSelect
+source.AnchorPoint = Vector2.new(0.5, 0.5)
+source.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source.BackgroundTransparency = 1.000
+source.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source.BorderSizePixel = 0
+source.Position = UDim2.new(0.5, 0, 0.5, 0)
+source.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source.Font = Enum.Font.SourceSansBold
+source.Text = "Player:"
+source.TextColor3 = Color3.fromRGB(0, 0, 0)
+source.TextScaled = true
+source.TextSize = 14.000
+source.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source.TextWrapped = true
+source.TextXAlignment = Enum.TextXAlignment.Left
+
+plar.Name = "plar"
+plar.Parent = PlayerSelect
+plar.AnchorPoint = Vector2.new(0.5, 0.5)
+plar.BackgroundColor3 = Color3.fromRGB(102, 177, 113)
+plar.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar.BorderSizePixel = 0
+plar.Position = UDim2.new(0.641791046, 0, 0.499999911, 0)
+plar.Size = UDim2.new(0.666417837, 0, 0.699999988, 0)
+plar.ClearTextOnFocus = false
+plar.Font = Enum.Font.SourceSansBold
+plar.Text = "dimadima19800"
+plar.TextColor3 = Color3.fromRGB(0, 0, 0)
+plar.TextScaled = true
+plar.TextSize = 14.000
+plar.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+plar.TextWrapped = true
+
+UICorner_4.CornerRadius = UDim.new(0, 5)
+UICorner_4.Parent = plar
+
+SlotSelect.Name = "SlotSelect"
+SlotSelect.Parent = NPC
+SlotSelect.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+SlotSelect.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SlotSelect.BorderSizePixel = 0
+SlotSelect.LayoutOrder = 1
+SlotSelect.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_5.CornerRadius = UDim.new(0, 5)
+UICorner_5.Parent = SlotSelect
+
+source_2.Name = "source"
+source_2.Parent = SlotSelect
+source_2.AnchorPoint = Vector2.new(0.5, 0.5)
+source_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_2.BackgroundTransparency = 1.000
+source_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_2.BorderSizePixel = 0
+source_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_2.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_2.Font = Enum.Font.SourceSansBold
+source_2.Text = "Plot number:"
+source_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_2.TextScaled = true
+source_2.TextSize = 14.000
+source_2.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_2.TextWrapped = true
+source_2.TextXAlignment = Enum.TextXAlignment.Left
+
+plar_2.Name = "plar"
+plar_2.Parent = SlotSelect
+plar_2.AnchorPoint = Vector2.new(0.5, 0.5)
+plar_2.BackgroundColor3 = Color3.fromRGB(102, 177, 113)
+plar_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar_2.BorderSizePixel = 0
+plar_2.Position = UDim2.new(0.728855729, 0, 0.499999911, 0)
+plar_2.Size = UDim2.new(0.492288381, 0, 0.699999988, 0)
+plar_2.ClearTextOnFocus = false
+plar_2.Font = Enum.Font.SourceSansBold
+plar_2.Text = "1"
+plar_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+plar_2.TextScaled = true
+plar_2.TextSize = 14.000
+plar_2.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+plar_2.TextWrapped = true
+
+UICorner_6.CornerRadius = UDim.new(0, 5)
+UICorner_6.Parent = plar_2
+
+Speed.Name = "Speed"
+Speed.Parent = NPC
+Speed.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+Speed.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Speed.BorderSizePixel = 0
+Speed.LayoutOrder = 3
+Speed.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_7.CornerRadius = UDim.new(0, 5)
+UICorner_7.Parent = Speed
+
+source_3.Name = "source"
+source_3.Parent = Speed
+source_3.AnchorPoint = Vector2.new(0.5, 0.5)
+source_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_3.BackgroundTransparency = 1.000
+source_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_3.BorderSizePixel = 0
+source_3.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_3.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_3.Font = Enum.Font.SourceSansBold
+source_3.Text = "Walk speed:"
+source_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_3.TextScaled = true
+source_3.TextSize = 14.000
+source_3.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_3.TextWrapped = true
+source_3.TextXAlignment = Enum.TextXAlignment.Left
+
+plar_3.Name = "plar"
+plar_3.Parent = Speed
+plar_3.AnchorPoint = Vector2.new(0.5, 0.5)
+plar_3.BackgroundColor3 = Color3.fromRGB(102, 177, 113)
+plar_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar_3.BorderSizePixel = 0
+plar_3.Position = UDim2.new(0.728855729, 0, 0.499999911, 0)
+plar_3.Size = UDim2.new(0.492288381, 0, 0.699999988, 0)
+plar_3.ClearTextOnFocus = false
+plar_3.Font = Enum.Font.SourceSansBold
+plar_3.Text = "16"
+plar_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+plar_3.TextScaled = true
+plar_3.TextSize = 14.000
+plar_3.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+plar_3.TextWrapped = true
+
+UICorner_8.CornerRadius = UDim.new(0, 5)
+UICorner_8.Parent = plar_3
+
+JumpPower.Name = "JumpPower"
+JumpPower.Parent = NPC
+JumpPower.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+JumpPower.BorderColor3 = Color3.fromRGB(0, 0, 0)
+JumpPower.BorderSizePixel = 0
+JumpPower.LayoutOrder = 4
+JumpPower.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_9.CornerRadius = UDim.new(0, 5)
+UICorner_9.Parent = JumpPower
+
+source_4.Name = "source"
+source_4.Parent = JumpPower
+source_4.AnchorPoint = Vector2.new(0.5, 0.5)
+source_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_4.BackgroundTransparency = 1.000
+source_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_4.BorderSizePixel = 0
+source_4.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_4.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_4.Font = Enum.Font.SourceSansBold
+source_4.Text = "Jump power:"
+source_4.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_4.TextScaled = true
+source_4.TextSize = 14.000
+source_4.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_4.TextWrapped = true
+source_4.TextXAlignment = Enum.TextXAlignment.Left
+
+plar_4.Name = "plar"
+plar_4.Parent = JumpPower
+plar_4.AnchorPoint = Vector2.new(0.5, 0.5)
+plar_4.BackgroundColor3 = Color3.fromRGB(102, 177, 113)
+plar_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar_4.BorderSizePixel = 0
+plar_4.Position = UDim2.new(0.728855729, 0, 0.499999911, 0)
+plar_4.Size = UDim2.new(0.492288381, 0, 0.699999988, 0)
+plar_4.ClearTextOnFocus = false
+plar_4.Font = Enum.Font.SourceSansBold
+plar_4.Text = "50"
+plar_4.TextColor3 = Color3.fromRGB(0, 0, 0)
+plar_4.TextScaled = true
+plar_4.TextSize = 14.000
+plar_4.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+plar_4.TextWrapped = true
+
+UICorner_10.CornerRadius = UDim.new(0, 5)
+UICorner_10.Parent = plar_4
+
+Border.Name = "Border"
+Border.Parent = NPC
+Border.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+Border.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Border.BorderSizePixel = 0
+Border.LayoutOrder = 7
+Border.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_11.CornerRadius = UDim.new(0, 5)
+UICorner_11.Parent = Border
+
+source_5.Name = "source"
+source_5.Parent = Border
+source_5.AnchorPoint = Vector2.new(0.5, 0.5)
+source_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_5.BackgroundTransparency = 1.000
+source_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_5.BorderSizePixel = 0
+source_5.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_5.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_5.Font = Enum.Font.SourceSansBold
+source_5.Text = "Disable plots border:"
+source_5.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_5.TextScaled = true
+source_5.TextSize = 14.000
+source_5.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_5.TextWrapped = true
+source_5.TextXAlignment = Enum.TextXAlignment.Left
+
+plar_5.Name = "plar"
+plar_5.Parent = Border
+plar_5.AnchorPoint = Vector2.new(0.5, 0.5)
+plar_5.BackgroundColor3 = Color3.fromRGB(102, 177, 113)
+plar_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar_5.BorderSizePixel = 0
+plar_5.Position = UDim2.new(0.922999978, 0, 0.5, 0)
+plar_5.Size = UDim2.new(0, 20, 0, 20)
+
+UICorner_12.CornerRadius = UDim.new(0, 5)
+UICorner_12.Parent = plar_5
+
+plar2.Name = "plar2"
+plar2.Parent = plar_5
+plar2.AnchorPoint = Vector2.new(0.5, 0.5)
+plar2.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+plar2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar2.BorderSizePixel = 0
+plar2.Position = UDim2.new(0.5, 0, 0.5, 0)
+plar2.Size = UDim2.new(0.699999988, 0, 0.699999988, 0)
+plar2.Visible = false
+
+UICorner_13.CornerRadius = UDim.new(0, 5)
+UICorner_13.Parent = plar2
+
+Button.Name = "Button"
+Button.Parent = Border
+Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button.BackgroundTransparency = 1.000
+Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Button.BorderSizePixel = 0
+Button.Size = UDim2.new(1, 0, 1, 0)
+Button.Font = Enum.Font.SourceSans
+Button.Text = " "
+Button.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button.TextSize = 14.000
+
+jumping.Name = "jumping"
+jumping.Parent = NPC
+jumping.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+jumping.BorderColor3 = Color3.fromRGB(0, 0, 0)
+jumping.BorderSizePixel = 0
+jumping.LayoutOrder = 5
+jumping.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_14.CornerRadius = UDim.new(0, 5)
+UICorner_14.Parent = jumping
+
+source_6.Name = "source"
+source_6.Parent = jumping
+source_6.AnchorPoint = Vector2.new(0.5, 0.5)
+source_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_6.BackgroundTransparency = 1.000
+source_6.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_6.BorderSizePixel = 0
+source_6.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_6.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_6.Font = Enum.Font.SourceSansBold
+source_6.Text = "Auto jumping:"
+source_6.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_6.TextScaled = true
+source_6.TextSize = 14.000
+source_6.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_6.TextWrapped = true
+source_6.TextXAlignment = Enum.TextXAlignment.Left
+
+plar_6.Name = "plar"
+plar_6.Parent = jumping
+plar_6.AnchorPoint = Vector2.new(0.5, 0.5)
+plar_6.BackgroundColor3 = Color3.fromRGB(102, 177, 113)
+plar_6.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar_6.BorderSizePixel = 0
+plar_6.Position = UDim2.new(0.922999978, 0, 0.5, 0)
+plar_6.Size = UDim2.new(0, 20, 0, 20)
+
+UICorner_15.CornerRadius = UDim.new(0, 5)
+UICorner_15.Parent = plar_6
+
+plar2_2.Name = "plar2"
+plar2_2.Parent = plar_6
+plar2_2.AnchorPoint = Vector2.new(0.5, 0.5)
+plar2_2.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+plar2_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar2_2.BorderSizePixel = 0
+plar2_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+plar2_2.Size = UDim2.new(0.699999988, 0, 0.699999988, 0)
+plar2_2.Visible = false
+
+UICorner_16.CornerRadius = UDim.new(0, 5)
+UICorner_16.Parent = plar2_2
+
+Button_2.Name = "Button"
+Button_2.Parent = jumping
+Button_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button_2.BackgroundTransparency = 1.000
+Button_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Button_2.BorderSizePixel = 0
+Button_2.Size = UDim2.new(1, 0, 1, 0)
+Button_2.Font = Enum.Font.SourceSans
+Button_2.Text = " "
+Button_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button_2.TextSize = 14.000
+
+Jump.Name = "Jump"
+Jump.Parent = NPC
+Jump.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+Jump.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Jump.BorderSizePixel = 0
+Jump.LayoutOrder = 6
+Jump.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_17.CornerRadius = UDim.new(0, 5)
+UICorner_17.Parent = Jump
+
+source_7.Name = "source"
+source_7.Parent = Jump
+source_7.AnchorPoint = Vector2.new(0.5, 0.5)
+source_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_7.BackgroundTransparency = 1.000
+source_7.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_7.BorderSizePixel = 0
+source_7.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_7.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_7.Font = Enum.Font.SourceSansBold
+source_7.Text = "Jump"
+source_7.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_7.TextScaled = true
+source_7.TextSize = 14.000
+source_7.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_7.TextWrapped = true
+
+Button_3.Name = "Button"
+Button_3.Parent = Jump
+Button_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button_3.BackgroundTransparency = 1.000
+Button_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Button_3.BorderSizePixel = 0
+Button_3.Size = UDim2.new(1, 0, 1, 0)
+Button_3.Font = Enum.Font.SourceSans
+Button_3.Text = " "
+Button_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button_3.TextSize = 14.000
+
+Follow.Name = "Follow"
+Follow.Parent = NPC
+Follow.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+Follow.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Follow.BorderSizePixel = 0
+Follow.LayoutOrder = 2
+Follow.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_18.CornerRadius = UDim.new(0, 5)
+UICorner_18.Parent = Follow
+
+source_8.Name = "source"
+source_8.Parent = Follow
+source_8.AnchorPoint = Vector2.new(0.5, 0.5)
+source_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_8.BackgroundTransparency = 1.000
+source_8.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_8.BorderSizePixel = 0
+source_8.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_8.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_8.Font = Enum.Font.SourceSansBold
+source_8.Text = "Following:"
+source_8.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_8.TextScaled = true
+source_8.TextSize = 14.000
+source_8.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_8.TextWrapped = true
+source_8.TextXAlignment = Enum.TextXAlignment.Left
+
+plar_7.Name = "plar"
+plar_7.Parent = Follow
+plar_7.AnchorPoint = Vector2.new(0.5, 0.5)
+plar_7.BackgroundColor3 = Color3.fromRGB(102, 177, 113)
+plar_7.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar_7.BorderSizePixel = 0
+plar_7.Position = UDim2.new(0.922999978, 0, 0.5, 0)
+plar_7.Size = UDim2.new(0, 20, 0, 20)
+
+UICorner_19.CornerRadius = UDim.new(0, 5)
+UICorner_19.Parent = plar_7
+
+plar2_3.Name = "plar2"
+plar2_3.Parent = plar_7
+plar2_3.AnchorPoint = Vector2.new(0.5, 0.5)
+plar2_3.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+plar2_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar2_3.BorderSizePixel = 0
+plar2_3.Position = UDim2.new(0.5, 0, 0.5, 0)
+plar2_3.Size = UDim2.new(0.699999988, 0, 0.699999988, 0)
+plar2_3.Visible = false
+
+UICorner_20.CornerRadius = UDim.new(0, 5)
+UICorner_20.Parent = plar2_3
+
+Button_4.Name = "Button"
+Button_4.Parent = Follow
+Button_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button_4.BackgroundTransparency = 1.000
+Button_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Button_4.BorderSizePixel = 0
+Button_4.Size = UDim2.new(1, 0, 1, 0)
+Button_4.Font = Enum.Font.SourceSans
+Button_4.Text = " "
+Button_4.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button_4.TextSize = 14.000
+
+PLAYER.Name = "PLAYER"
+PLAYER.Parent = buttons
+PLAYER.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PLAYER.BackgroundTransparency = 1.000
+PLAYER.BorderColor3 = Color3.fromRGB(0, 0, 0)
+PLAYER.BorderSizePixel = 0
+PLAYER.Position = UDim2.new(0.518902719, 0, 0.0937492326, 0)
+PLAYER.Size = UDim2.new(0, 202, 0, 382)
+
+UIListLayout_2.Parent = PLAYER
+UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_2.Padding = UDim.new(0, 8)
+
+Camera.Name = "Camera"
+Camera.Parent = PLAYER
+Camera.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+Camera.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Camera.BorderSizePixel = 0
+Camera.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_21.CornerRadius = UDim.new(0, 5)
+UICorner_21.Parent = Camera
+
+source_9.Name = "source"
+source_9.Parent = Camera
+source_9.AnchorPoint = Vector2.new(0.5, 0.5)
+source_9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_9.BackgroundTransparency = 1.000
+source_9.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_9.BorderSizePixel = 0
+source_9.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_9.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_9.Font = Enum.Font.SourceSansBold
+source_9.Text = "Unlock camera"
+source_9.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_9.TextScaled = true
+source_9.TextSize = 14.000
+source_9.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_9.TextWrapped = true
+
+Button_5.Name = "Button"
+Button_5.Parent = Camera
+Button_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button_5.BackgroundTransparency = 1.000
+Button_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Button_5.BorderSizePixel = 0
+Button_5.Size = UDim2.new(1, 0, 1, 0)
+Button_5.Font = Enum.Font.SourceSans
+Button_5.Text = " "
+Button_5.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button_5.TextSize = 14.000
+
+Spy.Name = "Spy"
+Spy.Parent = PLAYER
+Spy.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+Spy.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Spy.BorderSizePixel = 0
+Spy.LayoutOrder = 1
+Spy.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_22.CornerRadius = UDim.new(0, 5)
+UICorner_22.Parent = Spy
+
+source_10.Name = "source"
+source_10.Parent = Spy
+source_10.AnchorPoint = Vector2.new(0.5, 0.5)
+source_10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_10.BackgroundTransparency = 1.000
+source_10.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_10.BorderSizePixel = 0
+source_10.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_10.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_10.Font = Enum.Font.SourceSansBold
+source_10.Text = "View player:"
+source_10.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_10.TextScaled = true
+source_10.TextSize = 14.000
+source_10.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_10.TextWrapped = true
+source_10.TextXAlignment = Enum.TextXAlignment.Left
+
+plar_8.Name = "plar"
+plar_8.Parent = Spy
+plar_8.AnchorPoint = Vector2.new(0.5, 0.5)
+plar_8.BackgroundColor3 = Color3.fromRGB(102, 177, 113)
+plar_8.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar_8.BorderSizePixel = 0
+plar_8.Position = UDim2.new(0.922999978, 0, 0.5, 0)
+plar_8.Size = UDim2.new(0, 20, 0, 20)
+
+UICorner_23.CornerRadius = UDim.new(0, 5)
+UICorner_23.Parent = plar_8
+
+plar2_4.Name = "plar2"
+plar2_4.Parent = plar_8
+plar2_4.AnchorPoint = Vector2.new(0.5, 0.5)
+plar2_4.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+plar2_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar2_4.BorderSizePixel = 0
+plar2_4.Position = UDim2.new(0.5, 0, 0.5, 0)
+plar2_4.Size = UDim2.new(0.699999988, 0, 0.699999988, 0)
+plar2_4.Visible = false
+
+UICorner_24.CornerRadius = UDim.new(0, 5)
+UICorner_24.Parent = plar2_4
+
+Button_6.Name = "Button"
+Button_6.Parent = Spy
+Button_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button_6.BackgroundTransparency = 1.000
+Button_6.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Button_6.BorderSizePixel = 0
+Button_6.Size = UDim2.new(1, 0, 1, 0)
+Button_6.Font = Enum.Font.SourceSans
+Button_6.Text = " "
+Button_6.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button_6.TextSize = 14.000
+
+Tp.Name = "Tp"
+Tp.Parent = PLAYER
+Tp.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+Tp.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Tp.BorderSizePixel = 0
+Tp.LayoutOrder = 2
+Tp.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_25.CornerRadius = UDim.new(0, 5)
+UICorner_25.Parent = Tp
+
+source_11.Name = "source"
+source_11.Parent = Tp
+source_11.AnchorPoint = Vector2.new(0.5, 0.5)
+source_11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_11.BackgroundTransparency = 1.000
+source_11.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_11.BorderSizePixel = 0
+source_11.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_11.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_11.Font = Enum.Font.SourceSansBold
+source_11.Text = "Teleport npc to player"
+source_11.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_11.TextScaled = true
+source_11.TextSize = 14.000
+source_11.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_11.TextWrapped = true
+
+Button_7.Name = "Button"
+Button_7.Parent = Tp
+Button_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button_7.BackgroundTransparency = 1.000
+Button_7.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Button_7.BorderSizePixel = 0
+Button_7.Size = UDim2.new(1, 0, 1, 0)
+Button_7.Font = Enum.Font.SourceSans
+Button_7.Text = " "
+Button_7.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button_7.TextSize = 14.000
+
+quote.Name = "quote"
+quote.Parent = Frame
+quote.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+quote.BackgroundTransparency = 1.000
+quote.BorderColor3 = Color3.fromRGB(0, 0, 0)
+quote.BorderSizePixel = 0
+quote.Position = UDim2.new(0, 0, 0.910550475, 0)
+quote.Size = UDim2.new(0, 433, 0, 29)
+quote.Font = Enum.Font.SourceSans
+quote.Text = "The original idea to made follow script was by Brickified and Royal_ftap (on youtube) im just recreated the script so every credits to them"
+quote.TextColor3 = Color3.fromRGB(100, 100, 100)
+quote.TextScaled = true
+quote.TextSize = 14.000
+quote.TextWrapped = true
+
+-- Dargging
+
+local UIS = game:GetService("UserInputService")
+
+local draggableFrame = Frame
+
+local IsDragging = false    --checks if the player is dragging the frame
+local dragInput             --input variable which we will use later
+local StartingPoint
+local oldPos                --Old position from the frame
+
+local function update(input)
+	local delta = input.Position - StartingPoint
+	draggableFrame.Position = UDim2.new(oldPos.X.Scale, oldPos.X.Offset + delta.X, oldPos.Y.Scale, oldPos.Y.Offset + delta.Y)
 end
+
+draggableFrame.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 then
+		IsDragging = true
+		StartingPoint = input.Position
+		oldPos = draggableFrame.Position
+
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				IsDragging = false
+			end
+		end)
+	end
+end)
+
+draggableFrame.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement then
+		dragInput = input
+	end
+end)
+
+UIS.InputChanged:Connect(function(input)
+	if input == dragInput and IsDragging then
+		update(input)
+	end
+end)
+
+-- Main
+
+-- Gui functions
+
+Border["Button"].MouseButton1Click:Connect(function()
+	if Border["plar"]["plar2"].Visible == false then
+		Border["plar"]["plar2"].Visible = true
+	else
+		Border["plar"]["plar2"].Visible = false
+	end
+end)
+
+Follow["Button"].MouseButton1Click:Connect(function()
+	if Follow["plar"]["plar2"].Visible == false then
+		Follow["plar"]["plar2"].Visible = true
+	else
+		Follow["plar"]["plar2"].Visible = false
+	end
+end)
+
+jumping["Button"].MouseButton1Click:Connect(function()
+	if jumping["plar"]["plar2"].Visible == false then
+		jumping["plar"]["plar2"].Visible = true
+	else
+		jumping["plar"]["plar2"].Visible = false
+	end
+end)
+
+Spy["Button"].MouseButton1Click:Connect(function()
+	if Spy["plar"]["plar2"].Visible == false then
+		Spy["plar"]["plar2"].Visible = true
+	else
+		Spy["plar"]["plar2"].Visible = false
+	end
+end)
+
+Jump["Button"].MouseButton1Click:Connect(function()
+	
+end)
+
+Camera["Button"].MouseButton1Click:Connect(function()
+	
+end)
+
+Tp["Button"].MouseButton1Click:Connect(function()
+	
+end)
