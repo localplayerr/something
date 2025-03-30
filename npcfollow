@@ -97,6 +97,7 @@ local quote = Instance.new("TextLabel")
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.DisplayOrder = 100
 
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
@@ -1023,9 +1024,10 @@ Jump["Button"].MouseButton1Click:Connect(function()
 end)
 
 ViewMouse["Button"].MouseButton1Click:Connect(function()
-	game:GetService("UserInputService").MouseIconEnabled = false
+	game:GetService("UserInputService").MouseIconEnabled = true
 	game:GetService("UserInputService"):GetPropertyChangedSignal("MouseIconEnabled"):connect(function()
-		game:GetService("UserInputService").MouseIconEnabled = false
+		task.wait(0.1)
+		game:GetService("UserInputService").MouseIconEnabled = true
 	end)
 end)
 
