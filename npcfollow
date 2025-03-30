@@ -1,6 +1,11 @@
 -- Gui to Lua
 -- Version: 3.2
 
+-- Variables
+
+local dums = {}
+local jumps = false
+
 -- Instances:
 
 local ScreenGui = Instance.new("ScreenGui")
@@ -795,29 +800,72 @@ end)
 
 -- Main
 
+local FollowFunction = coroutine.create(function()
+	while task.wait() do
+		dums = {}
+		for _ , v in game.Workspace.PlotItems["Plot"..SlotSelect["plar"].Text]:GetChildren() do
+			if v.Name == "YouDecoy" then table.insert(dums,v.Humanoid) end
+		end
+		for _ , dum in dums do
+			dum.Jump = jumps
+			dum.WalkToPoint = game.Players[PlayerSelect["plar"].Text].Character.HumanoidRootPart.Position
+			dum.WalkSpeed = tonumber(Speed["plar"].Text)
+		end
+	end
+end)
+
 -- Gui functions
+
+for _ , plot in game.Workspace.Plots:GetChildren() do
+	local plotborder = plot:FindFirstChild("Border")
+	if plotborder then
+		for _ , bord in plotborder:GetChildren() do
+			bord.CanCollide = false
+		end
+	end
+end
 
 Border["Button"].MouseButton1Click:Connect(function()
 	if Border["plar"]["plar2"].Visible == false then
 		Border["plar"]["plar2"].Visible = true
+		for _ , plot in game.Workspace.Plots:GetChildren() do
+			local plotborder = plot:FindFirstChild("Border")
+			if plotborder then
+				for _ , bord in plotborder:GetChildren() do
+					bord.CanCollide = false
+				end
+			end
+		end
 	else
 		Border["plar"]["plar2"].Visible = false
+		for _ , plot in game.Workspace.Plots:GetChildren() do
+			local plotborder = plot:FindFirstChild("Border")
+			if plotborder then
+				for _ , bord in plotborder:GetChildren() do
+					bord.CanCollide = true
+				end
+			end
+		end
 	end
 end)
 
 Follow["Button"].MouseButton1Click:Connect(function()
 	if Follow["plar"]["plar2"].Visible == false then
 		Follow["plar"]["plar2"].Visible = true
+		coroutine.resume(FollowFunction)
 	else
 		Follow["plar"]["plar2"].Visible = false
+		coroutine.yield(FollowFunction)
 	end
 end)
 
 jumping["Button"].MouseButton1Click:Connect(function()
 	if jumping["plar"]["plar2"].Visible == false then
 		jumping["plar"]["plar2"].Visible = true
+		jumps = true
 	else
 		jumping["plar"]["plar2"].Visible = false
+		jumps = false
 	end
 end)
 
@@ -830,13 +878,18 @@ Spy["Button"].MouseButton1Click:Connect(function()
 end)
 
 Jump["Button"].MouseButton1Click:Connect(function()
-	
+	for _ , dum in dums do
+		dum.Jump = true
+	end
 end)
 
 Camera["Button"].MouseButton1Click:Connect(function()
-	
+	game.Players.LocalPlayer.CameraMode = Enum.CameraMode.Classic
+	game.Players.LocalPlayer.CameraMaxZoomDistance = 3
 end)
 
 Tp["Button"].MouseButton1Click:Connect(function()
-	
+	for _ , dum in dums do
+		dum.Parent.HumanoidRootPart.CFrame = game.Players[PlayerSelect["plar"].Text].Character.HumanoidRootPart.CFrame
+	end
 end)
