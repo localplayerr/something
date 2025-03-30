@@ -812,6 +812,7 @@ local FollowFunction = coroutine.create(function()
 				dum.Jump = jumps
 				dum.WalkToPoint = game.Players[PlayerSelect["plar"].Text].Character.HumanoidRootPart.Position
 				dum.WalkSpeed = tonumber(Speed["plar"].Text)
+				dum["JumpPower"] = tonumber(JumpPower["plar"].Text)
 			end
 		end)
 		if paused == true then 
