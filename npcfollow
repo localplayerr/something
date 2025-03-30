@@ -1022,6 +1022,13 @@ Jump["Button"].MouseButton1Click:Connect(function()
 	end
 end)
 
+ViewMouse["Button"].MouseButton1Click:Connect(function()
+	game:GetService("UserInputService").MouseIconEnabled = false
+	game:GetService("UserInputService"):GetPropertyChangedSignal("MouseIconEnabled"):connect(function()
+		game:GetService("UserInputService").MouseIconEnabled = false
+	end)
+end)
+
 Camera["Button"].MouseButton1Click:Connect(function()
 	game.Players.LocalPlayer.CameraMode = Enum.CameraMode.Classic
 	game.Players.LocalPlayer.CameraMaxZoomDistance = 10
