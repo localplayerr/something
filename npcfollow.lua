@@ -916,6 +916,7 @@ end)
 
 local FollowFunction = coroutine.create(function()
 	while task.wait() do
+        print("resume")
 		task.spawn(function()
 			dums = {}
 			for _ , v in game.Workspace.PlotItems["Plot"..SlotSelect["plar"].Text]:GetChildren() do
@@ -930,7 +931,7 @@ local FollowFunction = coroutine.create(function()
 		end)
 		if paused == true then
 			for _ , dum in dums do
-				dum.WalkToPoint = nil
+				dum.WalkToPoint = dum.Parent.HumanoidRootPart.Position
 			end
 			coroutine.yield()
 			continue
