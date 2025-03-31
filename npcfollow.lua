@@ -928,11 +928,12 @@ local FollowFunction = coroutine.create(function()
 				dum["JumpPower"] = tonumber(JumpPower["plar"].Text)
 			end
 		end)
-		if paused == true then 
-			coroutine.yield()
+		task.wait(0.5)
+		if paused == true then
 			for _ , dum in dums do
 				dum.WalkToPoint = nil
 			end
+			coroutine.yield()
 		end
 	end
 end)
