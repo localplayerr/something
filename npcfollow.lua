@@ -91,19 +91,26 @@ local ViewMouse = Instance.new("Frame")
 local UICorner_29 = Instance.new("UICorner")
 local source_13 = Instance.new("TextLabel")
 local Button_9 = Instance.new("TextButton")
+local SpyNpc = Instance.new("Frame")
+local UICorner_30 = Instance.new("UICorner")
+local source_14 = Instance.new("TextLabel")
+local plar_10 = Instance.new("Frame")
+local UICorner_31 = Instance.new("UICorner")
+local plar2_6 = Instance.new("Frame")
+local UICorner_32 = Instance.new("UICorner")
+local Button_10 = Instance.new("TextButton")
 local quote = Instance.new("TextLabel")
 
 --Properties:
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ScreenGui.DisplayOrder = 100
 
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0, 0, 0, 0)
+Frame.Position = UDim2.new(0.198170722, 0, 0.0239547025, 0)
 Frame.Size = UDim2.new(0, 433, 0, 436)
 
 Frame_2.Parent = Frame
@@ -855,6 +862,72 @@ Button_9.Text = " "
 Button_9.TextColor3 = Color3.fromRGB(0, 0, 0)
 Button_9.TextSize = 14.000
 
+SpyNpc.Name = "SpyNpc"
+SpyNpc.Parent = PLAYER
+SpyNpc.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+SpyNpc.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SpyNpc.BorderSizePixel = 0
+SpyNpc.LayoutOrder = 4
+SpyNpc.Size = UDim2.new(0, 201, 0, 24)
+
+UICorner_30.CornerRadius = UDim.new(0, 5)
+UICorner_30.Parent = SpyNpc
+
+source_14.Name = "source"
+source_14.Parent = SpyNpc
+source_14.AnchorPoint = Vector2.new(0.5, 0.5)
+source_14.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+source_14.BackgroundTransparency = 1.000
+source_14.BorderColor3 = Color3.fromRGB(0, 0, 0)
+source_14.BorderSizePixel = 0
+source_14.Position = UDim2.new(0.5, 0, 0.5, 0)
+source_14.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+source_14.Font = Enum.Font.SourceSansBold
+source_14.Text = "View npc:"
+source_14.TextColor3 = Color3.fromRGB(0, 0, 0)
+source_14.TextScaled = true
+source_14.TextSize = 14.000
+source_14.TextStrokeColor3 = Color3.fromRGB(34, 34, 34)
+source_14.TextWrapped = true
+source_14.TextXAlignment = Enum.TextXAlignment.Left
+
+plar_10.Name = "plar"
+plar_10.Parent = SpyNpc
+plar_10.AnchorPoint = Vector2.new(0.5, 0.5)
+plar_10.BackgroundColor3 = Color3.fromRGB(102, 177, 113)
+plar_10.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar_10.BorderSizePixel = 0
+plar_10.Position = UDim2.new(0.922999978, 0, 0.5, 0)
+plar_10.Size = UDim2.new(0, 20, 0, 20)
+
+UICorner_31.CornerRadius = UDim.new(0, 5)
+UICorner_31.Parent = plar_10
+
+plar2_6.Name = "plar2"
+plar2_6.Parent = plar_10
+plar2_6.AnchorPoint = Vector2.new(0.5, 0.5)
+plar2_6.BackgroundColor3 = Color3.fromRGB(147, 255, 165)
+plar2_6.BorderColor3 = Color3.fromRGB(0, 0, 0)
+plar2_6.BorderSizePixel = 0
+plar2_6.Position = UDim2.new(0.5, 0, 0.5, 0)
+plar2_6.Size = UDim2.new(0.699999988, 0, 0.699999988, 0)
+plar2_6.Visible = false
+
+UICorner_32.CornerRadius = UDim.new(0, 5)
+UICorner_32.Parent = plar2_6
+
+Button_10.Name = "Button"
+Button_10.Parent = SpyNpc
+Button_10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button_10.BackgroundTransparency = 1.000
+Button_10.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Button_10.BorderSizePixel = 0
+Button_10.Size = UDim2.new(1, 0, 1, 0)
+Button_10.Font = Enum.Font.SourceSans
+Button_10.Text = " "
+Button_10.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button_10.TextSize = 14.000
+
 quote.Name = "quote"
 quote.Parent = Frame
 quote.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -864,7 +937,7 @@ quote.BorderSizePixel = 0
 quote.Position = UDim2.new(0, 0, 0.910550475, 0)
 quote.Size = UDim2.new(0, 433, 0, 29)
 quote.Font = Enum.Font.SourceSans
-quote.Text = "The original idea to made follow script was by Brickified and Royal_ftap (on youtube) im just recreated the script so every credits to them"
+quote.Text = "The original idea to made follow script was by Brickified and Royal_ftap (on youtube) LocalPlayer just recreated the script so every credits to them"
 quote.TextColor3 = Color3.fromRGB(100, 100, 100)
 quote.TextScaled = true
 quote.TextSize = 14.000
@@ -913,6 +986,10 @@ UIS.InputChanged:Connect(function(input)
 end)
 
 -- Main
+
+for _ , water in game.Workspace.Map.AlwaysHereTweenedObjects.Ocean.Object.ObjectModel:GetChildren() do
+	water.CanCollide = true
+end
 
 local FollowFunction = coroutine.create(function()
 	while task.wait() do
@@ -1041,5 +1118,15 @@ end)
 Tp["Button"].MouseButton1Click:Connect(function()
 	for _ , dum in dums do
 		dum.Parent.HumanoidRootPart.CFrame = game.Players[PlayerSelect["plar"].Text].Character.HumanoidRootPart.CFrame
+	end
+end)
+
+SpyNpc["Button"].MouseButton1Click:Connect(function()
+	if SpyNpc["plar"]["plar2"].Visible == false then
+		SpyNpc["plar"]["plar2"].Visible = true
+		game.Workspace.CurrentCamera.CameraSubject = dums[math.random(1,#dums)]
+	else
+		SpyNpc["plar"]["plar2"].Visible = false
+		game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
 	end
 end)
