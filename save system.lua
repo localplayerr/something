@@ -17,14 +17,22 @@ function save(name)
     end
     b = b.."}"
 
-    writefile(name..".lua","return"..b)
+    writefile(name..".lua","_G.templ = "..game:GetService("HttpService"):JSONEncode(savetab))
 
     warn("saved")
 end
 
 function load(name)
-    local tabl = dofile(name..".lua")
+    local _ = dofile(name..".lua")
 
+    local tabl
+
+    if not _G.templ then
+        warn("Failed to load")
+    else
+        tabl = game:GetService("HttpService"):JSONDncode(_G.templ)
+    end
+    
     print(#tabl)
 
     for _ , obj in tabl do
