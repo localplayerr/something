@@ -41,7 +41,17 @@ function load(name)
             CFrame.new(0,0,0),
             Vector3.new(0,0,0)
         ) 
+        toys:GetChildren()[#toys:GetChildren()].PrimaryPart.Anchored = true
         toys:GetChildren()[#toys:GetChildren()]:PivotTo(obj[2])
+    end
+
+    local fram = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+
+    for _ , v in toys:GetChildren() do
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetPivot()
+        task.wait(0.2)
+        v.PrimaryPart.Anchored = false
+        game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(v.PrimaryPart, v.PrimaryPart.CFrame)
     end
 
     warn("loaded")
