@@ -49,6 +49,8 @@ function load(name)
         end
     end
 
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = fram
+
     warn("loaded")
 end
 
