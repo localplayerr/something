@@ -13,25 +13,17 @@ function save(name)
     for i , v in savetab do
         local p = ","
         if i == 1 then p = "" end
-        b = b..p.."{"..v[1]..","..v[2].."}"
+        b = b..p.."{"..v[1]..",CFrame.new("..v[2]..")}"
     end
     b = b.."}"
 
-    writefile(name..".lua","_G.templ = "..game:GetService("HttpService"):JSONEncode(savetab))
+    writefile(name..".lua","return "..b.."")
 
     warn("saved")
 end
 
 function load(name)
-    local _ = dofile(name..".lua")
-
-    local tabl
-
-    if not _G.templ then
-        warn("Failed to load")
-    else
-        tabl = game:GetService("HttpService"):JSONDncode(_G.templ)
-    end
+    local tabl = dofile(name..".lua")()
     
     print(#tabl)
 
@@ -48,13 +40,16 @@ function load(name)
     local fram = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 
     for _ , v in toys:GetChildren() do
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetPivot()
-        task.wait(0.2)
-        v.PrimaryPart.Anchored = false
-        game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(v.PrimaryPart, v.PrimaryPart.CFrame)
+        if v.Name ~= "ToyNumber" then
+            print(v.Name)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetPivot()
+            task.wait(0.2)
+            v.PrimaryPart.Anchored = false
+            game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(v.PrimaryPart, v.PrimaryPart.CFrame)
+        end
     end
 
     warn("loaded")
 end
 
-save("TestBuild")
+load("TestBuild")
