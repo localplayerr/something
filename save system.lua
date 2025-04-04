@@ -27,25 +27,29 @@ function load(name)
     
     print(#tabl)
 
+    local fram = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+
     for _ , obj in tabl do
         game.ReplicatedStorage.MenuToys.SpawnToyRemoteFunction:InvokeServer(
             obj[1],
             CFrame.new(0,0,0),
             Vector3.new(0,0,0)
         ) 
-        toys:GetChildren()[#toys:GetChildren()].PrimaryPart.Anchored = true
-        toys:GetChildren()[#toys:GetChildren()]:PivotTo(obj[2])
+
+        local toy = toys:GetChildren()[#toys:GetChildren()]
+        
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = toy:GetPivot()
+
+        game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(toy.PrimaryPart, toy.PrimaryPart.CFrame)
+
+        toy.PrimaryPart.Anchored = false
+        toy:PivotTo(obj[2])
     end
 
-    local fram = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-
+    
     for _ , v in toys:GetChildren() do
         if v.Name ~= "ToyNumber" then
-            print(v.Name)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:GetPivot()
-            task.wait(0.2)
             v.PrimaryPart.Anchored = false
-            game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(v.PrimaryPart, v.PrimaryPart.CFrame)
         end
     end
 
