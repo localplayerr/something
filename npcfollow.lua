@@ -1,3 +1,4 @@
+
 -- Gui to Lua
 -- Version: 3.2
 
@@ -1097,7 +1098,9 @@ local FollowFunction = coroutine.create(function()
 		end)
 		if paused == true then
 			for _ , dum in dums do
-				dum.WalkToPoint = dum.Parent.HumanoidRootPart.Position
+                task.spawn(function()
+				    dum.WalkToPoint = dum.Parent.HumanoidRootPart.Position
+                end)
 			end
 			coroutine.yield()
 			continue
