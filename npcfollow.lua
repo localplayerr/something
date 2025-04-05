@@ -1086,7 +1086,7 @@ local FollowFunction = coroutine.create(function()
 		task.spawn(function()
 			dums = {}
 			for _ , v in game.Workspace.PlotItems["Plot"..SlotSelect["plar"].Text]:GetChildren() do
-				if v.Name == "YouDecoy" then table.insert(dums,v.Humanoid) end
+				if v.Name == "YouDecoy" or v.Name == "NpcRobloxianMascot" then table.insert(dums,v.Humanoid) end
 			end
 			for _ , dum in dums do
 				dum.Jump = jumps
