@@ -1163,7 +1163,7 @@ end)
 
 Spy["Button"].MouseButton1Click:Connect(function()
 	if Spy["plar"]["plar2"].Visible == false then
-		SpyNpc["plar"]["plar2"].Visible == false
+		SpyNpc["plar"]["plar2"].Visible = false
 		Spy["plar"]["plar2"].Visible = true
 		game.Workspace.CurrentCamera.CameraSubject = game.Players[PlayerSelect["plar"].Text].Character.Humanoid
 	else
@@ -1175,7 +1175,7 @@ end)
 SpyNpc["Button"].MouseButton1Click:Connect(function()
 	if SpyNpc["plar"]["plar2"].Visible == false then
 		SpyNpc["plar"]["plar2"].Visible = true
-		Spy["plar"]["plar2"].Visible == false
+		Spy["plar"]["plar2"].Visible = false
 		game.Workspace.CurrentCamera.CameraSubject = dums[math.random(1,#dums)]
 	else
 		SpyNpc["plar"]["plar2"].Visible = false
