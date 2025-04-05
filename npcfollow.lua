@@ -1083,7 +1083,6 @@ end
 
 local FollowFunction = coroutine.create(function()
 	while task.wait() do
-        print("resume")
 		task.spawn(function()
 			dums = {}
 			for _ , v in game.Workspace.PlotItems["Plot"..SlotSelect["plar"].Text]:GetChildren() do
@@ -1100,7 +1099,7 @@ local FollowFunction = coroutine.create(function()
 			for _ , dum in dums do
                 task.spawn(function()
 				    dum.WalkToPoint = dum.Parent.HumanoidRootPart.Position
-                end)
+               	 end)
 			end
 			coroutine.yield()
 			continue
@@ -1190,12 +1189,16 @@ Freeze["Button"].MouseButton1Click:Connect(function()
 	if Freeze["plar"]["plar2"].Visible == false then
 		Freeze["plar"]["plar2"].Visible = true
 		for _ , dum in dums do
-			dum.Parent.HumanoidRootPart.Anchored = true
+			task.spawn(function()
+				dum.Parent.HumanoidRootPart.Anchored = true
+			end)
 		end
 	else
 		Freeze["plar"]["plar2"].Visible = false
 		for _ , dum in dums do
-			dum.Parent.HumanoidRootPart.Anchored = false
+			task.spawn(function()
+				dum.Parent.HumanoidRootPart.Anchored = false
+			end)
 		end
 	end
 end)
@@ -1220,29 +1223,29 @@ Camera["Button"].MouseButton1Click:Connect(function()
 end)
 
 Tp["Button"].MouseButton1Click:Connect(function()
-	task.spawn(function()
-		for _ , dum in dums do
+	for _ , dum in dums do
+		task.spawn(function()
 			dum.Parent.HumanoidRootPart.CFrame = game.Players[PlayerSelect["plar"].Text].Character.HumanoidRootPart.CFrame
-		end
-	end)
+		end)
+	end
 end)
 
 ooo["Button"].MouseButton1Click:Connect(function()
-	task.spawn(function()
-		for _ , dum in dums do
+	for _ , dum in dums do
+		task.spawn(function()
 			dum.Parent.HumanoidRootPart.CFrame = CFrame.new(0,0,0)
-		end
-	end)
+		end)
+	end
 end)
 
 own["Button"].MouseButton1Click:Connect(function()
-	task.spawn(function()
-		local fram = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-		for _ , dum in dums do
+	local fram = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+	for _ , dum in dums do
+		task.spawn(function()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = dum.Parent.HumanoidRootPart.CFrame
 			game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(dum.Parent.HumanoidRootPart, dum.Parent.HumanoidRootPart.CFrame)
 			task.wait(0.05)
-		end
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = fram
-	end)
+		end)
+	end
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = fram
 end)
