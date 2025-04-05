@@ -1237,7 +1237,7 @@ own["Button"].MouseButton1Click:Connect(function()
 		local fram = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 		for _ , dum in dums do
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = dum.Parent.HumanoidRootPart.CFrame
-			game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(dum.Parent.HumanoidRootPart, dum.Parent.HumanoidRootPar.CFrame)
+			game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(dum.Parent.HumanoidRootPart, dum.Parent.HumanoidRootPart.CFrame)
 			task.wait(0.05)
 		end
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = fram
