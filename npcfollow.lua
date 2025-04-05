@@ -1163,10 +1163,22 @@ end)
 
 Spy["Button"].MouseButton1Click:Connect(function()
 	if Spy["plar"]["plar2"].Visible == false then
+		SpyNpc["plar"]["plar2"].Visible == false
 		Spy["plar"]["plar2"].Visible = true
 		game.Workspace.CurrentCamera.CameraSubject = game.Players[PlayerSelect["plar"].Text].Character.Humanoid
 	else
 		Spy["plar"]["plar2"].Visible = false
+		game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
+	end
+end)
+
+SpyNpc["Button"].MouseButton1Click:Connect(function()
+	if SpyNpc["plar"]["plar2"].Visible == false then
+		SpyNpc["plar"]["plar2"].Visible = true
+		Spy["plar"]["plar2"].Visible == false
+		game.Workspace.CurrentCamera.CameraSubject = dums[math.random(1,#dums)]
+	else
+		SpyNpc["plar"]["plar2"].Visible = false
 		game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
 	end
 end)
@@ -1210,12 +1222,18 @@ Tp["Button"].MouseButton1Click:Connect(function()
 	end
 end)
 
-SpyNpc["Button"].MouseButton1Click:Connect(function()
-	if SpyNpc["plar"]["plar2"].Visible == false then
-		SpyNpc["plar"]["plar2"].Visible = true
-		game.Workspace.CurrentCamera.CameraSubject = dums[math.random(1,#dums)]
-	else
-		SpyNpc["plar"]["plar2"].Visible = false
-		game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
+ooo["Button"].MouseButton1Click:Connect(function()
+	for _ , dum in dums do
+		dum.Parent.HumanoidRootPart.CFrame = CFrame.new(0,0,0)
 	end
+end)
+
+own["Button"].MouseButton1Click:Connect(function()
+	local fram = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+	for _ , dum in dums do
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = dum.Parent.HumanoidRootPart.CFrame
+		game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(dum.Parent.HumanoidRootPart, dum.Parent.HumanoidRootPar.CFrame)
+		task.wait(0.05)
+	end
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = fram
 end)
