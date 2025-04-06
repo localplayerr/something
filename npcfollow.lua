@@ -1086,7 +1086,7 @@ local FollowFunction = coroutine.create(function()
 		task.spawn(function()
 			dums = {}
 			for _ , v in game.Workspace.PlotItems["Plot"..SlotSelect["plar"].Text]:GetChildren() do
-				if v:FindFirstChildWhichIsA("Humanoid") and v:FindFirstChild("HumanoidRootPart") then table.insert(dums,v.Humanoid) elseif table.find(dums,v) then table.remove(dums,v) end
+				if v:FindFirstChildWhichIsA("Humanoid") and v:FindFirstChild("HumanoidRootPart") then print(a) table.insert(dums,v:FindFirstChildWhichIsA("Humanoid")) elseif table.find(dums,v) then table.remove(dums,v) end
 			end
 			for _ , dum in dums do
 				dum.Jump = jumps
