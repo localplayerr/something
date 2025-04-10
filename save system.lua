@@ -13,7 +13,7 @@ function save(name)
     for i , v in savetab do
         local p = ","
         if i == 1 then p = "" end
-        b = b..p.."{"..'"'..v[1]..'"'..",CFrame.new("..v[2]..")}"
+        b = b..p..'{"'..v[1]..'",CFrame.new('..v[2]..")}"
     end
     b = b.."}"
 
