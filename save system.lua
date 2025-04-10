@@ -37,6 +37,9 @@ function load(name)
         ) 
 
         local toy = toys:GetChildren()[#toys:GetChildren()]
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = toy.PrimaryPart.CFrame
+        game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(toy, toy.PrimaryPart.CFrame)
+        toy.PrimaryPart.Anchored = true
         toy:PivotTo(obj[2])
     end
 
