@@ -32,7 +32,7 @@ function load(name)
     for _ , obj in tabl do
         game.ReplicatedStorage.MenuToys.SpawnToyRemoteFunction:InvokeServer(
             obj[1],
-            CFrame.new(0,0,0),
+            CFrame.new(-479, -7, 347),
             Vector3.new(0,0,0)
         ) 
 
@@ -55,4 +55,4 @@ function load(name)
     warn("loaded")
 end
 
-load("TestBuild")
+load("Station")
