@@ -115,7 +115,7 @@ local KillLoop = Tab:CreateToggle({
 })
 
 local Bypass = Tab:CreateToggle({
-   Name = "Loop",
+   Name = "Bypass blobman loop",
    CurrentValue = false,
    Flag = "Toggle2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
