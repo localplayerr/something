@@ -43,6 +43,7 @@ end
 local Tab = Window:CreateTab("Kill", 7733955511)
 
 local PlayerToKill = {}
+local isloop = false
 
 function Kill(player)	
 	local part = game.Players[player].Character.HumanoidRootPart
@@ -91,3 +92,24 @@ local KillPlayer = Tab:CreateButton({
 	end
    end,
 })
+
+local KillLoop = Tab:CreateToggle({
+   Name = "Loop",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+	if Value == true then
+		isloop = true
+		task.spawn(function()
+			while task.wait(5) and isloop == true do
+				for _ , plr in PlayerToKill do
+					Kill(plr)
+				end
+			end
+		end)
+	else
+		isloop = false
+	end
+   end,
+})
+
