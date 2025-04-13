@@ -122,7 +122,7 @@ local Bypass = Tab:CreateToggle({
 	if Value == true then
 		isbypass = true
 		task.spawn(function()
-			while game:GetService("RunService") and isloop == true do
+			while game:GetService("RunService").RenderStepped:wait() and isbypass == true do
 			    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-480,-7,-350)
 			    game.Players.LocalPlayer.Character.Humanoid.Sit = true
 			    game.Players.LocalPlayer.Character.Humanoid.Jump = true
