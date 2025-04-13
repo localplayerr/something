@@ -81,7 +81,7 @@ end)
 local KillPlayer = Tab:CreateButton({
    Name = "Kill player",
    Callback = function()
-   	for _ , plr in PlayerToKill() do
+   	for _ , plr in PlayerToKill do
 		Kill(plr)
 	end
    end,
