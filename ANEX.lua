@@ -44,6 +44,7 @@ local Tab = Window:CreateTab("Kill", 7733955511)
 
 local PlayerToKill = {}
 local isloop = false
+local ismbypass = false
 
 function Kill(player)	
 	local part = game.Players[player].Character.HumanoidRootPart
@@ -109,6 +110,26 @@ local KillLoop = Tab:CreateToggle({
 		end)
 	else
 		isloop = false
+	end
+   end,
+})
+
+local Bypass = Tab:CreateToggle({
+   Name = "Loop",
+   CurrentValue = false,
+   Flag = "Toggle2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+	if Value == true then
+		isbypass = true
+		task.spawn(function()
+			while game:GetService("RunService") and isloop == true do
+			    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-480,-7,-350)
+			    game.Players.LocalPlayer.Character.Humanoid.Sit = true
+			    game.Players.LocalPlayer.Character.Humanoid.Jump = true
+			end
+		end)
+	else
+		isbypass = false
 	end
    end,
 })
