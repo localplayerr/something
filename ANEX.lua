@@ -40,7 +40,7 @@ for _ , v in game.Players:GetPlayers() do
 	table.insert(playerss,v.Name)
 end
 
-local Tab = Window:CreateTab("Kill", 0)
+local Tab = Window:CreateTab("Kill", 7733955511)
 
 local PlayerToKill = {}
 
@@ -49,9 +49,9 @@ function Kill(player)
 	local fram = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 	
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = part.CFrame
-	task.wait(0.1)	
+	task.wait(0.2)	
 	game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(part, part.CFrame)
-	task.wait(0.2)
+	task.wait(0.07)
 	
 	part.Parent.Humanoid.Health = 0
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = fram
