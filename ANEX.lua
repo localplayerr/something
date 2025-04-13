@@ -89,7 +89,7 @@ local KillPlayer = Tab:CreateButton({
    Name = "Kill player",
    Callback = function()
    	for _ , plr in PlayerToKill do
-		Kill(plr)
+		task.spawn(Kill,plr)
 	end
    end,
 })
@@ -104,7 +104,7 @@ local KillLoop = Tab:CreateToggle({
 		task.spawn(function()
 			while task.wait(5) and isloop == true do
 				for _ , plr in PlayerToKill do
-					Kill(plr)
+					task.spawn(Kill,plr)
 				end
 			end
 		end)
