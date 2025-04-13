@@ -53,7 +53,7 @@ function Kill(player)
 	game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(part, part.CFrame)
 	part.Parent.Humanoid.Health = 0
 	game.ReplicatedStorage.GrabEvents.CreateGrabLine:FireServer(part, Vector3.new(0,0,0))
-	task.wait(0.07)
+	task.wait(0.1)
 	
 	game:GetService("ReplicatedStorage"):WaitForChild("GrabEvents"):WaitForChild("DestroyGrabLine"):FireServer(part)
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = fram
@@ -72,13 +72,16 @@ local chos = Tab:CreateDropdown({
    end,
 })
 
-game.Players.Changed:connect(function() 
+function refr()
 	local playerss = {}
 	for _ , v in game.Players:GetPlayers() do
 		table.insert(playerss,v.Name)
 	end
 	chos:Refresh(playerss)
-end)
+end
+
+game.Players.ChildAdded:connect(refr)
+game.Players.ChildRemoved:connect(refr)
 
 local KillPlayer = Tab:CreateButton({
    Name = "Kill player",
