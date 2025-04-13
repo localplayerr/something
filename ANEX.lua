@@ -64,7 +64,9 @@ local chos = Tab:CreateDropdown({
    MultipleOptions = true,
    Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Options)
-	PlayerToKill = Options
+	for i , v in Options do
+		PlayerToKill[i] = v
+	end
    end,
 })
 
