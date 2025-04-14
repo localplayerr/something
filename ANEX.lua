@@ -122,7 +122,8 @@ local Bypass = Tab:CreateToggle({
 	if Value == true then
 		isbypass = true
 		task.spawn(function()
-			while game:GetService("RunService").RenderStepped:wait() and isbypass == true do
+			while game:GetService("RunService").RenderStepped:wait() or  game:GetService("RunService").PreRender:wait() and isbypass == true do
+			    game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(game.Players.LocalPlayer.Character.HumanoidRootPart, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 			    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-480,-7,-350)
 			    game.Players.LocalPlayer.Character.Humanoid.Sit = true
 			    game.Players.LocalPlayer.Character.Humanoid.Jump = true
