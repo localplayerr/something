@@ -11,7 +11,7 @@ function save(name)
         end
     end
 
-    local b = '{"'..name..'","'..game.Players.LocalPlayer.DisplayName..'"{'
+    local b = '{"'..name..'","'..game.Players.LocalPlayer.DisplayName..'",{'
     for i , v in savetab do
         local p = ","
         if i == 1 then p = "" end
