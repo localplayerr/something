@@ -8,19 +8,19 @@ light.Ambient = Color3.fromRGB(0,0,0)
 light.Brightness = 3
 
 while task.wait(1) do
-    light.ClockTime += 0.0025
+    light.ClockTime += 0.02
 end
 
-if light.ClockTime == 18 then
-    for i = 900 , 0 , -1 do
-        task.wait(1)
-        light.Brightness -= 0.01
-    end
+if light.ClockTime >= 18 then
+    repeat
+        task.wait(0.1)
+        ight.Brightnes -= 0.01
+    until ight.Brightnes == 0
 end
 
-if light.ClockTime == 10 then
-    for i = 0 , 900 , 1 do
-        task.wait(1)
-        light.Brightness += 0.01
-    end
+if light.ClockTime >= 9 then
+    repeat
+        task.wait(0.1)
+        ight.Brightnes += 0.01
+    until ight.Brightnes == 3
 end
