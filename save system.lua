@@ -11,7 +11,7 @@ function save(name)
         end
     end
 
-    local b = '{"'..name..'","'..game.Players.LocalPlayer.DisplayName..'",{'
+    local b = '{{"'..name..'","'..game.Players.LocalPlayer.DisplayName..'"},{'
     for i , v in savetab do
         local p = ","
         if i == 1 then p = "" end
@@ -25,7 +25,9 @@ function save(name)
 end
 
 function load(name)
-    local tabl = dofile("FTAPBuilds/"..name..".lua")()[2]
+    local tabl = dofile("FTAPBuilds/"..name..".lua")()
+    local info = tabl[1]
+    tabl = tabl[2]
     
     print(#tabl)
 
