@@ -9,13 +9,13 @@ function save(name)
         end
     end
 
-    local b = "{"
+    local b = '{"'..name..'","'..game.Players.LocalPlayer.DisplayName..'"{'
     for i , v in savetab do
         local p = ","
         if i == 1 then p = "" end
         b = b..p.."{"..'"'..v[1]..'"'..",CFrame.new("..v[2]..")}"
     end
-    b = b.."}"
+    b = b.."}}"
 
     writefile(name..".lua","return "..b.."")
 
