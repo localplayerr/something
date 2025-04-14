@@ -1,5 +1,7 @@
 local toys = game.Workspace[game.Players.LocalPlayer.Name.."SpawnedInToys"]
 
+if not isfolder("FTAPBuilds") then makefolder("FTAPBuilds") end
+
 function save(name)
     local savetab = {}
 
@@ -17,13 +19,13 @@ function save(name)
     end
     b = b.."}}"
 
-    writefile(name..".lua","return "..b.."")
+    writefile("FTAPBuilds/"..name..".lua","return "..b.."")
 
     warn("saved")
 end
 
 function load(name)
-    local tabl = dofile(name..".lua")()
+    local tabl = dofile("FTAPBuilds/"..name..".lua")()[2]
     
     print(#tabl)
 
