@@ -1,12 +1,11 @@
-
 local typ = false
 
 local v1 = game.ReplicatedStorage
 
-if typ == true then
+local v3 = v1.BombEvents.BombReplicator
+local v4 = v1.BombEvents.BombExplode
 
-	local v3 = v1.BombEvents.BombReplicator
-	local v4 = v1.BombEvents.BombExplode
+if typ == true then
 	v3.OnClientEvent:Connect(function(p5)
 		if type(p5) == "string" then
 			print("yep its fe")
