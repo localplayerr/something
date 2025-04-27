@@ -1,17 +1,20 @@
-local typ = true
+
+local typ = false
+
+local v1 = game.ReplicatedStorage
 
 if typ == true then
 
-  local v3 = v1.BombEvents.BombReplicator
-  local v4 = v1.BombEvents.BombExplode
-  v3.OnClientEvent:Connect(function(p5)
-    if type(p5) == "string" then
-      print("yep its fe")
-    else
-      print("nah its not fe")
-    end
-  end)
+	local v3 = v1.BombEvents.BombReplicator
+	local v4 = v1.BombEvents.BombExplode
+	v3.OnClientEvent:Connect(function(p5)
+		if type(p5) == "string" then
+			print("yep its fe")
+		else
+			print("nah its not fe")
+		end
+	end)
 
 else
-  v3:FireServer("string request")
+	v3:FireServer("string request")
 end
