@@ -109,6 +109,15 @@ local KillPlayer = Tab:CreateButton({
    end,
 })
 
+local KickPlayer = Tab:CreateButton({
+   Name = "Kick player",
+   Callback = function()
+   	for _ , plr in PlayerToKill do
+		task.spawn(Kicck,plr)
+	end
+   end,
+})
+
 local KillLoop = Tab:CreateToggle({
    Name = "Loop",
    CurrentValue = false,
