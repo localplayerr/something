@@ -51,13 +51,10 @@ function Kill(player)
 	local fram = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 	
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = part.CFrame
-	task.wait(0.2)	
 	game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(part, part.CFrame)
-	part.Parent.Humanoid.Health = 0
-	game.ReplicatedStorage.GrabEvents.CreateGrabLine:FireServer(part, Vector3.new(0,0,0))
 	task.wait(0.1)
+	part.CFrame = CFrame.new(0,-5000,0)
 	
-	game:GetService("ReplicatedStorage"):WaitForChild("GrabEvents"):WaitForChild("DestroyGrabLine"):FireServer(part)
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = fram
 end
 
