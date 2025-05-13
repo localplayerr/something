@@ -58,6 +58,24 @@ function Kill(player)
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = fram
 end
 
+function Kicck(player)	
+	local part = game.Players[player].Character.HumanoidRootPart
+	local fram = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+	
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = part.CFrame
+	game.ReplicatedStorage.GrabEvents.SetNetworkOwner:FireServer(part, part.CFrame)
+	task.wait(0.1)
+	local isl = true
+	task.spawn(function()
+		while isl and game:GetService("RunService").RenderStepped:wait() do
+			part.CFrame = CFrame.new(0,10,0)
+		end
+	end
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = fram
+	task.wait(10) isl = false
+end
+
+
 local chos = Tab:CreateDropdown({
    Name = "Chose player",
    Options = playerss,
